@@ -6,6 +6,7 @@
 # import os and csv modules
 import os
 import csv
+import statistics
 
 # indicate the path to the csv file using the os notation
 csvpath = os.path.join('Resources', 'budget_data.csv')
@@ -18,17 +19,35 @@ with open(csvpath) as csvfile:
 # skip the header
     csv_header = next(csvreader)
 
-# use a for loop to count the remaining number of rows in the file
-# start the counter at zero
-    total_num_months = 0
-    for rows in csvreader:
-        total_num_months += 1
-    print(total_num_months)
+# initialize empty lists to store the Dates and Profit/Loses data
+    months = []
+    profit = []
+    
+# populate the lists with values from each row in the csv file
+    for row in csvreader:
 
-# sum the values in the Profit/Loses column to calculate the total amount
+        months.append(row[0])
+        profit.append(int(row[1]))
 
-# calculate the mean for of the Profit/Loses over the entire period
+# use len() and sum() functions to calculate total months and total profit
+        total_num_months = len(months)
+        total_profit = sum(profit)
 
-# find the max Profit/Loses and print it along with the date of its occurrence
+# use item indices to calculate change from one item to the next
+    monthly_change = [] # this list stores the changes from one month to the next
+    for i in range (0, len(profit)-1):
+        monthly_change.append(profit[i+1] - profit[i]) 
+        average_change = statistics.mean(monthly_change)
+        greatest_increase = max(monthly_change)
+        greatest_decrease = min(monthly_change)
+# because change starts being recorded after the first month
+# we need to add +1 to the greatest increase or greatest decrease
+# to get the correct index in the list of months[]
+        greatest_month = months[monthly_change.index(greatest_increase)+1]
+        worst_month = months[monthly_change.index(greatest_decrease)+1]
 
-# find the min Profit/Loses and print it along with the date of its occurrence
+    print(f'Total Months: {total_num_months}')
+    print(f'Total: ${total_profit}')
+    print(f'Average Change: {average_change: .2f}')
+    print(f'Greatest Increase in Profits: {greatest_month} (${greatest_increase})')
+    print(f'Greatest Decrease in Profits: {worst_month} (${greatest_decrease})')
