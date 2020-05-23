@@ -49,7 +49,7 @@ with open(csvpath) as csvfile:
 # the following commands print the results to the terminal
     print(f'Total Months: {total_num_months}')
     print(f'Total: ${total_profit}')
-    print(f'Average Change: {average_change: .2f}')
+    print(f'Average Change: ${average_change: .2f}')
     print(f'Greatest Increase in Profits: {greatest_month} (${greatest_increase})')
     print(f'Greatest Decrease in Profits: {worst_month} (${greatest_decrease})')
 
@@ -63,7 +63,7 @@ with open(output_path, 'w') as txtfile:
     '------------------------------------\n'
     f'Total Months: {total_num_months}\n' 
     f'Total: ${total_profit}\n'
-    f'Average Change: {average_change: .2f}\n'
+    f'Average Change: ${average_change: .2f}\n'
     f'Greatest Increase in Profits: {greatest_month} (${greatest_increase})\n'
     f'Greatest Decrease in Profits: {worst_month} (${greatest_decrease})')
     
