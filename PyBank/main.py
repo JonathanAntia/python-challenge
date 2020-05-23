@@ -46,8 +46,24 @@ with open(csvpath) as csvfile:
         greatest_month = months[monthly_change.index(greatest_increase)+1]
         worst_month = months[monthly_change.index(greatest_decrease)+1]
 
+# the following commands print the results to the terminal
     print(f'Total Months: {total_num_months}')
     print(f'Total: ${total_profit}')
     print(f'Average Change: {average_change: .2f}')
     print(f'Greatest Increase in Profits: {greatest_month} (${greatest_increase})')
     print(f'Greatest Decrease in Profits: {worst_month} (${greatest_decrease})')
+
+
+# path for the output file
+output_path = os.path.join("analysis", "PyBank.txt")
+
+# create the file using "write" mode
+with open(output_path, 'w') as txtfile:
+    write_results = txtfile.write('Financial Analysis:\n'
+    '------------------------------------\n'
+    f'Total Months: {total_num_months}\n' 
+    f'Total: ${total_profit}\n'
+    f'Average Change: {average_change: .2f}\n'
+    f'Greatest Increase in Profits: {greatest_month} (${greatest_increase})\n'
+    f'Greatest Decrease in Profits: {worst_month} (${greatest_decrease})')
+    
