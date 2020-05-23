@@ -33,7 +33,7 @@ with open(csvpath) as csvfile:
         total_num_months = len(months)
         total_profit = sum(profit)
 
-# use item indices to calculate change from one item to the next
+# use item indices to calculate change from one item to the next in the profit list
     monthly_change = [] # this list stores the changes from one month to the next
     for i in range (0, len(profit)-1):
         monthly_change.append(profit[i+1] - profit[i]) 
@@ -55,7 +55,7 @@ with open(csvpath) as csvfile:
 
 
 # path for the output file
-output_path = os.path.join("analysis", "PyBank.txt")
+output_path = os.path.join("analysis", "FinancialAnalysis.txt")
 
 # create the file using "write" mode
 with open(output_path, 'w') as txtfile:
