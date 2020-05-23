@@ -41,7 +41,7 @@ with open(csvpath) as csvfile:
         greatest_increase = max(monthly_change)
         greatest_decrease = min(monthly_change)
 # because change starts being recorded after the first month
-# we need to add +1 to the greatest increase or greatest decrease
+# a +1 needs to be added to the greatest increase or greatest decrease index
 # to get the correct index in the list of months[]
         greatest_month = months[monthly_change.index(greatest_increase)+1]
         worst_month = months[monthly_change.index(greatest_decrease)+1]
