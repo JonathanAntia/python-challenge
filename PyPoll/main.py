@@ -4,7 +4,7 @@
 # 4. skip the header row
 # 5. Count the total number of votes (rows) in the csv file
 # 6. Create a list of all the unique names in the candicates column
-# 7. Count the votes per candidate and calculate the percentage
+# 7. Use the count function to count the votes per candidate and calculate percentages
 # 8. Identify the highest percentage of votes and declare a winner
 
 # dependencies
@@ -53,7 +53,7 @@ with open (csv_path, 'r') as csv_file:
     print(f'Total Votes: {len(total_votes)}') 
     print("------------------------------")
     for i in range (0, len(candidate_names)):
-        print(f'{candidate_names[i]}: {percentage_per_candidate[i]: .3f}% , ({votes_per_candidate[i]})')
+        print(f'{candidate_names[i]}: {percentage_per_candidate[i]: .3f}%  ({votes_per_candidate[i]})')
     print("------------------------------")
     print(f'Winner: {candidate_names[votes_per_candidate.index(max(votes_per_candidate))]}')
     print("------------------------------")
@@ -67,9 +67,12 @@ output_path = os.path.join("analysis", "ElectionResults.txt")
 with open(output_path, 'w') as txtfile:
     write_results = txtfile.write('Election Results:\n'
     '------------------------------\n'
-    f'Total Votes: {len(total_votes)})\n'
-    '------------------------------\n'
-    for i in range (0,len(candicate_names)):f'{candidate_names[i]}: {percentage_per_candidate[i]: .3f}% , ({votes_per_candidate[i]})\n'
-    '------------------------------\n'
+    f'Total Votes: {len(total_votes)}\n'
+    '------------------------------\n')
+
+    for i in range (0,len(candidate_names)):
+        txtfile.write(f'{candidate_names[i]}: {percentage_per_candidate[i]: .3f}% , ({votes_per_candidate[i]})\n')
+    
+    txtfile.write('------------------------------\n'
     f'Winner: {candidate_names[votes_per_candidate.index(max(votes_per_candidate))]}\n'
     '------------------------------\n')
