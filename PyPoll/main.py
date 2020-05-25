@@ -25,13 +25,14 @@ with open (csv_path, 'r') as csv_file:
 
     csv_header = next(csvreader)
 
-# cound the total number of votes using a counter variable
-# initicallize the counter at zero
+# create empty lists to hold the candicate names, votes, and percentages
 
     total_votes = []
     candidate_names = []
     votes_per_candidate = []
     percentage_per_candidate = []
+
+# loop through the data provided to populate the list created above
 
     for row in csvreader:
         total_votes.append(row[2])
@@ -44,6 +45,8 @@ with open (csv_path, 'r') as csv_file:
 
     for votes in range (0, len(votes_per_candidate)):
         percentage_per_candidate.append(votes_per_candidate[votes]*100/len(total_votes))
+
+# print the results of the election to the terminal        
 
     print(candidate_names)
     print(votes_per_candidate)
