@@ -48,15 +48,28 @@ with open (csv_path, 'r') as csv_file:
 
 # print the results of the election to the terminal        
 
-    print(candidate_names)
-    print(votes_per_candidate)
-    print(percentage_per_candidate)
     print("Election Results")
-    print("-----------------------")
+    print("------------------------------")
     print(f'Total Votes: {len(total_votes)}') 
-    print("-----------------------")  
+    print("------------------------------")
     for i in range (0, len(candidate_names)):
-        print(f'{candidate_names[i]}: {percentage_per_candidate[i]}% , ({votes_per_candidate[i]} votes)')
-    print("-----------------------")
-    print("Winner: ")
-    print("-----------------------")
+        print(f'{candidate_names[i]}: {percentage_per_candidate[i]: .3f}% , ({votes_per_candidate[i]})')
+    print("------------------------------")
+    print(f'Winner: {candidate_names[votes_per_candidate.index(max(votes_per_candidate))]}')
+    print("------------------------------")
+
+# print the results in a text file
+
+# path for the output file
+output_path = os.path.join("analysis", "ElectionResults.txt")
+
+# create the file using "write" mode
+with open(output_path, 'w') as txtfile:
+    write_results = txtfile.write('Election Results:\n'
+    '------------------------------\n'
+    f'Total Votes: {len(total_votes)})\n'
+    '------------------------------\n'
+    for i in range (0,len(candicate_names)):f'{candidate_names[i]}: {percentage_per_candidate[i]: .3f}% , ({votes_per_candidate[i]})\n'
+    '------------------------------\n'
+    f'Winner: {candidate_names[votes_per_candidate.index(max(votes_per_candidate))]}\n'
+    '------------------------------\n')
