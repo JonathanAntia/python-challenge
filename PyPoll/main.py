@@ -1,8 +1,8 @@
 # 1. Import dependencies: os and csv
 # 2. Create a csv_path variable to connect to the csv file using os.path.join
-# 3. With open csv_path as file apply a reader funtion to the csv file: csv.reader
-# 4. skip the header row
-# 5. Count the total number of votes (rows) in the csv file
+# 3. With open csv_path as csv_file apply a reader funtion to iterate through the csv file
+# 4. Store and skip the header row
+# 5. Create a list of all the votes and count the total
 # 6. Create a list of all the unique names in the candicates column
 # 7. Use the count function to count the votes per candidate and calculate percentages
 # 8. Identify the highest percentage of votes and declare a winner
@@ -71,7 +71,7 @@ with open(output_path, 'w') as txtfile:
     '------------------------------\n')
 
     for i in range (0,len(candidate_names)):
-        txtfile.write(f'{candidate_names[i]}: {percentage_per_candidate[i]: .3f}% , ({votes_per_candidate[i]})\n')
+        txtfile.write(f'{candidate_names[i]}: {percentage_per_candidate[i]: .3f}% ({votes_per_candidate[i]})\n')
     
     txtfile.write('------------------------------\n'
     f'Winner: {candidate_names[votes_per_candidate.index(max(votes_per_candidate))]}\n'
