@@ -28,19 +28,32 @@ with open (csv_path, 'r') as csv_file:
 # cound the total number of votes using a counter variable
 # initicallize the counter at zero
 
-    total_votes = 0
+    total_votes = []
     candidate_names = []
+    votes_per_candidate = []
+    percentage_per_candidate = []
 
     for row in csvreader:
-        total_votes += 1
+        total_votes.append(row[2])
+
         if row[2] not in candidate_names:
             candidate_names.append(row[2])
 
-print("Election Results")
-print("-----------------------")
-print(f'Total Votes: {total_votes}')
-for names in candidate_names:
-    print(f'{names}:')
-print("-----------------------")
-print("Winner: ")
-print("-----------------------")
+    for names in candidate_names:
+        votes_per_candidate.append(total_votes.count(names))
+
+    for votes in range (0, len(votes_per_candidate)):
+        percentage_per_candidate.append(votes_per_candidate[votes]*100/len(total_votes))
+
+    print(candidate_names)
+    print(votes_per_candidate)
+    print(percentage_per_candidate)
+    print("Election Results")
+    print("-----------------------")
+    print(f'Total Votes: {len(total_votes)}') 
+    print("-----------------------")  
+    for i in range (0, len(candidate_names)):
+        print(f'{candidate_names[i]}: {percentage_per_candidate[i]}% , ({votes_per_candidate[i]} votes)')
+    print("-----------------------")
+    print("Winner: ")
+    print("-----------------------")
